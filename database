@@ -1,0 +1,236 @@
+create database shopping;
+show databases;
+use shopping;
+/* if run the code tables will created automatically */
+mysql> show tables;
++-------------------------+
+| Tables_in_shopping      |
++-------------------------+
+| cart                    |
+| cart_productsofcustomer |
+| customer                |
+| payment                 |
+| product                 |
+| productsofcustomer      |
+| shop                    |
+| shop_product            |
+| vendor                  |
+| vendor_shop             |
++-------------------------+
+10 rows in set (0.00 sec)
+
+  
+mysql> -- Insert Products
+mysql> INSERT INTO Product (name, numberOfProduct, price) VALUES
+    -> ('Samsung Galaxy M34', 50, 18999.00),
+    -> ('OnePlus Nord CE 3', 30, 24999.00),
+    -> ('Lenovo IdeaPad', 25, 45999.00),
+    -> ('boAt Airdopes 141', 100, 1499.00),
+    -> ('Milton Water Bottle', 200, 399.00),
+    -> ('Prestige Pressure Cooker', 75, 1299.00),
+    -> ('Forest Essentials Face Wash', 150, 599.00),
+    -> ('Fab India Kurta', 80, 1999.00),
+    -> ('Metro Formal Shoes', 60, 2499.00),
+    -> ('Titan Watch', 40, 3999.00),
+    -> ('Allen Solly Shirt', 90, 1599.00),
+    -> ('Usha Fan', 45, 2499.00),
+    -> ('Ajanta Wall Clock', 70, 499.00),
+    -> ('Britannia Good Day', 500, 30.00),
+    -> ('Haldiram Namkeen', 300, 45.00),
+    -> ('Tata Tea Gold', 250, 255.00),
+    -> ('MTR Masala', 180, 75.00),
+    -> ('Surf Excel', 200, 199.00),
+    -> ('Colgate MaxFresh', 400, 89.00),
+    -> ('Dettol Handwash', 300, 99.00);
+
+mysql> -- Insert Shops
+mysql> INSERT INTO Shop (name, address) VALUES
+    -> ('Sharma Electronics', 'Shop No 12, Lajpat Nagar, New Delhi'),
+    -> ('Kumar General Store', '45/2 MG Road, Bangalore'),
+    -> ('Patel Supermart', 'Shop 7, Bandra West, Mumbai'),
+    -> ('Gupta Brothers', '234 Civil Lines, Jaipur'),
+    -> ('Singh Electronics', 'Sector 17, Chandigarh'),
+    -> ('Verma Retail', 'Anna Nagar, Chennai'),
+    -> ('Reddy Mart', 'Jubilee Hills, Hyderabad'),
+    -> ('Malhotra Store', 'Hazratganj, Lucknow'),
+    -> ('Iyer Supermarket', 'MG Road, Cochin'),
+    -> ('Bansal Shopping Center', 'FC Road, Pune');
+
+mysql> -- Insert Vendors
+mysql> INSERT INTO Vendor (name, email, password, phoneNumber) VALUES
+    -> ('Rajesh Kumar', 'rajesh.kumar@gmail.com', 'Raj@123', 9876543210),
+    -> ('Amit Sharma', 'amit.sharma@gmail.com', 'Amit@123', 9876543211),
+    -> ('Priya Patel', 'priya.patel@gmail.com', 'Priya@123', 9876543212),
+    -> ('Suresh Verma', 'suresh.verma@gmail.com', 'Suresh@123', 9876543213),
+    -> ('Deepak Singh', 'deepak.singh@gmail.com', 'Deepak@123', 9876543214);
+
+mysql> -- Insert Customers
+mysql> INSERT INTO Customer (name, email, password, phoneNumber, gender) VALUES
+    -> ('Anita Desai', 'anita.desai@gmail.com', 'Anita@123', 9876543215, 'Female'),
+    -> ('Rahul Mehta', 'rahul.mehta@gmail.com', 'Rahul@123', 9876543216, 'Male'),
+    -> ('Priyanka Shah', 'priyanka.shah@gmail.com', 'Priyanka@123', 9876543217, 'Female'),
+    -> ('Vikram Reddy', 'vikram.reddy@gmail.com', 'Vikram@123', 9876543218, 'Male'),
+    -> ('Neha Gupta', 'neha.gupta@gmail.com', 'Neha@123', 9876543219, 'Female'),
+    -> ('Arun Iyer', 'arun.iyer@gmail.com', 'Arun@123', 9876543220, 'Male'),
+    -> ('Meera Malhotra', 'meera.malhotra@gmail.com', 'Meera@123', 9876543221, 'Female'),
+    -> ('Karthik Krishnan', 'karthik.k@gmail.com', 'Karthik@123', 9876543222, 'Male'),
+    -> ('Pooja Sharma', 'pooja.sharma@gmail.com', 'Pooja@123', 9876543223, 'Female'),
+    -> ('Arjun Nair', 'arjun.nair@gmail.com', 'Arjun@123', 9876543224, 'Male');
+
+mysql> -- Insert Carts
+mysql> INSERT INTO Cart (id) VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
+
+mysql> -- Insert Products of Customer
+mysql> INSERT INTO ProductsOfCustomer (name, numberOfProduct, price, idOfP) VALUES
+    -> ('Samsung Galaxy M34', 1, 18999.00, 1),
+    -> ('boAt Airdopes 141', 2, 1499.00, 4),
+    -> ('Fab India Kurta', 1, 1999.00, 8),
+    -> ('Titan Watch', 1, 3999.00, 10),
+    -> ('Tata Tea Gold', 2, 255.00, 16),
+    -> ('Surf Excel', 3, 199.00, 18),
+    -> ('OnePlus Nord CE 3', 1, 24999.00, 2),
+    -> ('Milton Water Bottle', 2, 399.00, 5),
+    -> ('Forest Essentials Face Wash', 1, 599.00, 7),
+    -> ('Dettol Handwash', 4, 99.00, 20);
+
+
+mysql> -- Insert Payments
+mysql> INSERT INTO Payment (mode, bill, time) VALUES
+    -> ('UPI', 20498.00, NOW()),
+    -> ('Credit Card', 2998.00, NOW()),
+    -> ('Debit Card', 1999.00, NOW()),
+    -> ('Net Banking', 3999.00, NOW()),
+    -> ('UPI', 510.00, NOW()),
+    -> ('Cash', 597.00, NOW()),
+    -> ('Credit Card', 24999.00, NOW()),
+    -> ('UPI', 798.00, NOW()),
+    -> ('Debit Card', 599.00, NOW()),
+    -> ('Cash', 396.00, NOW());
+
+
+/* Tables OutPuts: */
+/* manipulate the data in the tables according to the project requirement*/
+
+mysql> select * from cart;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  8 |
+|  9 |
+| 10 |
++----+
+
+
+mysql> select * from customer;
++----+--------------------------+--------+------------------+--------------+-------------+------+
+| id | email                    | gender | name             | password     | phoneNumber | c_id |
++----+--------------------------+--------+------------------+--------------+-------------+------+
+|  1 | anita.desai@gmail.com    | Female | Anita Desai      | Anita@123    |  9876543215 |    1 |
+|  2 | rahul.mehta@gmail.com    | Male   | Rahul Mehta      | Rahul@123    |  9876543216 |    2 |
+|  3 | priyanka.shah@gmail.com  | Female | Priyanka Shah    | Priyanka@123 |  9876543217 |    3 |
+|  4 | vikram.reddy@gmail.com   | Male   | Vikram Reddy     | Vikram@123   |  9876543218 |    4 |
+|  5 | neha.gupta@gmail.com     | Female | Neha Gupta       | Neha@123     |  9876543219 |    5 |
+|  6 | arun.iyer@gmail.com      | Male   | Arun Iyer        | Arun@123     |  9876543220 |    6 |
+|  7 | meera.malhotra@gmail.com | Female | Meera Malhotra   | Meera@123    |  9876543221 |    7 |
+|  8 | karthik.k@gmail.com      | Male   | Karthik Krishnan | Karthik@123  |  9876543222 |    8 |
+|  9 | pooja.sharma@gmail.com   | Female | Pooja Sharma     | Pooja@123    |  9876543223 |    9 |
+| 10 | arjun.nair@gmail.com     | Male   | Arjun Nair       | Arjun@123    |  9876543224 |   10 |
++----+--------------------------+--------+------------------+--------------+-------------+------+
+
+
+mysql> select * from payment;
++----+-------+-------------+----------------------------+
+| id | bill  | mode        | time                       |
++----+-------+-------------+----------------------------+
+|  1 | 20498 | UPI         | 2024-11-03 09:47:39.000000 |
+|  2 |  2998 | Credit Card | 2024-11-03 09:47:39.000000 |
+|  3 |  1999 | Debit Card  | 2024-11-03 09:47:39.000000 |
+|  4 |  3999 | Net Banking | 2024-11-03 09:47:39.000000 |
+|  5 |   510 | UPI         | 2024-11-03 09:47:39.000000 |
+|  6 |   597 | Cash        | 2024-11-03 09:47:39.000000 |
+|  7 | 24999 | Credit Card | 2024-11-03 09:47:39.000000 |
+|  8 |   798 | UPI         | 2024-11-03 09:47:39.000000 |
+|  9 |   599 | Debit Card  | 2024-11-03 09:47:39.000000 |
+| 10 |   396 | Cash        | 2024-11-03 09:47:39.000000 |
++----+-------+-------------+----------------------------+
+
+
+mysql> select * from product;
++----+-----------------------------+-----------------+-------+
+| id | name                        | numberOfProduct | price |
++----+-----------------------------+-----------------+-------+
+|  1 | Samsung Galaxy M34          |              50 | 18999 |
+|  2 | OnePlus Nord CE 3           |              30 | 24999 |
+|  3 | Lenovo IdeaPad              |              25 | 45999 |
+|  4 | boAt Airdopes 141           |             100 |  1499 |
+|  5 | Milton Water Bottle         |             200 |   399 |
+|  6 | Prestige Pressure Cooker    |              75 |  1299 |
+|  7 | Forest Essentials Face Wash |             150 |   599 |
+|  8 | Fab India Kurta             |              80 |  1999 |
+|  9 | Metro Formal Shoes          |              60 |  2499 |
+| 10 | Titan Watch                 |              40 |  3999 |
+| 11 | Allen Solly Shirt           |              90 |  1599 |
+| 12 | Usha Fan                    |              45 |  2499 |
+| 13 | Ajanta Wall Clock           |              70 |   499 |
+| 14 | Britannia Good Day          |             500 |    30 |
+| 15 | Haldiram Namkeen            |             300 |    45 |
+| 16 | Tata Tea Gold               |             250 |   255 |
+| 17 | MTR Masala                  |             180 |    75 |
+| 18 | Surf Excel                  |             200 |   199 |
+| 19 | Colgate MaxFresh            |             400 |    89 |
+| 20 | Dettol Handwash             |             300 |    99 |
++----+-----------------------------+-----------------+-------+
+
+
+mysql> select * from productsofcustomer;
++----+-------+-----------------------------+-----------------+-------+
+| id | idOfP | name                        | numberOfProduct | price |
++----+-------+-----------------------------+-----------------+-------+
+|  1 |     1 | Samsung Galaxy M34          |               1 | 18999 |
+|  2 |     4 | boAt Airdopes 141           |               2 |  1499 |
+|  3 |     8 | Fab India Kurta             |               1 |  1999 |
+|  4 |    10 | Titan Watch                 |               1 |  3999 |
+|  5 |    16 | Tata Tea Gold               |               2 |   255 |
+|  6 |    18 | Surf Excel                  |               3 |   199 |
+|  7 |     2 | OnePlus Nord CE 3           |               1 | 24999 |
+|  8 |     5 | Milton Water Bottle         |               2 |   399 |
+|  9 |     7 | Forest Essentials Face Wash |               1 |   599 |
+| 10 |    20 | Dettol Handwash             |               4 |    99 |
++----+-------+-----------------------------+-----------------+-------+
+
+
+
+mysql> select * from shop;
++----+-------------------------------------+------------------------+
+| id | address                             | name                   |
++----+-------------------------------------+------------------------+
+|  1 | Shop No 12, Lajpat Nagar, New Delhi | Sharma Electronics     |
+|  2 | 45/2 MG Road, Bangalore             | Kumar General Store    |
+|  3 | Shop 7, Bandra West, Mumbai         | Patel Supermart        |
+|  4 | 234 Civil Lines, Jaipur             | Gupta Brothers         |
+|  5 | Sector 17, Chandigarh               | Singh Electronics      |
+|  6 | Anna Nagar, Chennai                 | Verma Retail           |
+|  7 | Jubilee Hills, Hyderabad            | Reddy Mart             |
+|  8 | Hazratganj, Lucknow                 | Malhotra Store         |
+|  9 | MG Road, Cochin                     | Iyer Supermarket       |
+| 10 | FC Road, Pune                       | Bansal Shopping Center |
++----+-------------------------------------+------------------------+
+
+mysql> select * from vendor;
++----+------------------------+--------------+------------+-------------+
+| id | email                  | name         | password   | phoneNumber |
++----+------------------------+--------------+------------+-------------+
+|  1 | rajesh.kumar@gmail.com | Rajesh Kumar | Raj@123    |  9876543210 |
+|  2 | amit.sharma@gmail.com  | Amit Sharma  | Amit@123   |  9876543211 |
+|  3 | priya.patel@gmail.com  | Priya Patel  | Priya@123  |  9876543212 |
+|  4 | suresh.verma@gmail.com | Suresh Verma | Suresh@123 |  9876543213 |
+|  5 | deepak.singh@gmail.com | Deepak Singh | Deepak@123 |  9876543214 |
++----+------------------------+--------------+------------+-------------+
+
